@@ -1,0 +1,1 @@
+This is the first line i wrote to a file from node.js code.

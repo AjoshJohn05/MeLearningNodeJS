@@ -1,0 +1,2 @@
+const fileSystem= require('fs');         //imports  the built in files system functionality to a varible for accessing it.
+fileSystem.writeFileSync('MyFile.txt','This is the first line i wrote to a file from node.js code.');  // params=>param1:'filename', param2:'content'
