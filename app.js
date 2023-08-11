@@ -1,20 +1,29 @@
-//this file is the root of application
 
-const http= require('http');
-const RouteSettings = require('./routes');
-// const server= http.createServer((request,response)=>{
-//     // console.log("Listening");
-//     // console.log(request);
-//     // console.log(response);
-//     // console.log(request.url,request.method,request.headers);
-//     console.log(request.url);
-    
-    
-    
-//     // process.exit();
-// });
-const server= http.createServer(RouteSettings);
-// const server= http.createServer(RouteSettings.RouteConfig);
-//console.log(RouteSettings.Discription);
-server.listen(3005); //port:3005
+const express=require('express');
+
+const expressApp= express();
+expressApp.use((request,response,next)=>
+{
+    console.log("Middleware-1");
+    next();
+});
+expressApp.use('/add',(req,resp,next)=>
+{
+    console.log("URL:/add");
+    next();
+});
+expressApp.use('/',(req,resp,next)=>
+{
+    console.log("url:/");
+    next();
+});
+
+expressApp.use((request,response)=>
+{
+    console.log("Middleware-2");
+    response.send('<h1>Hi hello...!</h1>');
+});
+
+expressApp.listen(3008);
+//server.close();
 
