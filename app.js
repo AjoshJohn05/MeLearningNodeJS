@@ -20,8 +20,13 @@ app.post('/user',(req,res)=>{
 app.use('/',(req,res)=>
 {
     console.log(req.query);
+    let passedUsername="";
+    if(req.query.username!==undefined)
+    {
+        passedUsername=req.query.username;
+    }
     console.log('/ route middleware');
-    res.send('<h1>Hello...Welcome '+req.query.username+'</h1>');
+    res.send('<h1>Hello...Welcome '+passedUsername+'</h1>');
 });
 app.listen(3008);
 //server.close();
