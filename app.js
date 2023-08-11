@@ -1,29 +1,28 @@
 
 const express=require('express');
+const bodyParser=require('body-parser');
 
-const expressApp= express();
-expressApp.use((request,response,next)=>
-{
-    console.log("Middleware-1");
-    next();
+const app= express();
+app.use(bodyParser.urlencoded({extended:false}));
+app.get('/favicon.ico', (req, res) => {
+    // Respond with an appropriate status code and message
+    res.status(204).end();
 });
-expressApp.use('/add',(req,resp,next)=>
-{
-    console.log("URL:/add");
-    next();
+app.get('/addUser',(req,res,next)=>{
+    console.log('/addUser');
+    res.send('<form method="POST" action="/user"><input type="text" name="username" placeholder="Username" /><button type=submit >Add</button></form>');
 });
-expressApp.use('/',(req,resp,next)=>
-{
-    console.log("url:/");
-    next();
-});
+app.post('/user',(req,res)=>{
+    console.log(req.body);
+    res.redirect('?username='+req.body.username);
 
-expressApp.use((request,response)=>
-{
-    console.log("Middleware-2");
-    response.send('<h1>Hi hello...!</h1>');
 });
-
-expressApp.listen(3008);
+app.use('/',(req,res)=>
+{
+    console.log(req.query);
+    console.log('/ route middleware');
+    res.send('<h1>Hello...Welcome '+req.query.username+'</h1>');
+});
+app.listen(3008);
 //server.close();
 
