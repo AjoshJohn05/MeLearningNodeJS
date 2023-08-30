@@ -1,16 +1,20 @@
 
 const express=require('express');
 const bodyParser=require('body-parser');
+const path=require('path');
 
 const adminRouter=require('./Routes/Admin_Routes');
 const userRouter=require('./Routes/User_Routes');
+const rootPath=require('./Utils/Path_Utility');
 
 const app= express();
+app.use(express.static(path.join(__dirname,'Public')))
 app.use(bodyParser.urlencoded({extended:false}));
 app.use('/admin',adminRouter);
 app.use(userRouter);
 app.use((req,resp)=>{
-    resp.status(404).send('<h1>404 Bad request</h1>');
+    // resp.status(404).send('<h1>404 Bad request</h1>');
+    resp.status(404).sendFile(path.join(__dirname,'Views','404-View.html'));
 });
 
 // app.get('/favicon.ico', (req, res) => {

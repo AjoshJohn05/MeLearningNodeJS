@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeWeb</title>
+    <link rel="stylesheet" href="/CSS/_layout.css">
+</head>
+<body>
+    <header class="layout-header">    
+        <nav class="layout-header__nav">
+            <ul class="layout-header__list">
+                <li class="layout-header__list-item"><a href='/'>Shop</a></li>
+                <li class="layout-header__list-item"><a href='/admin/addUser'>AddUser</a></li>
+                <li class="layout-header__list-item"><a href='/admin/addProduct' class="active">AddProduct</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="layout-main">
+        <card class="layout-main__card">
+            <h1 class="heading layout-main__heading">Add your product here...!</h1>
+            <form method="POST" action="product" class="layout-main__form">
+                <input required type="text" name="productname" placeholder="Product Name" class="txtbox layout-main__input" />
+                <label class="layout-main__label">Product Name</label>
+                <button class="btn layout-main__button" type="submit">Add</button>
+            </form>
+        </card>
+    </main>
+</body>
+</html>

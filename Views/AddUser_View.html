@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeWeb</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            display: flex;
+            flex-direction: row;
+            background: linear-gradient(347deg, rgba(2,0,36,1) 0%, rgba(16,16,224,1) 0%, rgba(71,196,183,1) 60%);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .user-header{
+            background-color:#154baf;
+            width: 100%;
+            height: 3.7rem;
+            /* padding: 0 1.5rem; */
+        }
+        .user-header__nav{
+            all:initial;
+            height: 100%;
+            align-items: center;
+            display: flex;
+        }
+        .user-header__list{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            /* flex-direction: column; */
+            margin: 0px;
+            border: 0px;
+            padding: 0px;
+            /* all:initial; */
+        }
+        .user-header__list-item{
+            padding: 5px 10px;
+            /* all:initial;
+            height: 100%; */
+        }
+        .user-header__list-item a {
+            text-decoration: none;
+            color:#f0f8ff;
+            align-items: center;
+            font-size: large;
+        }
+        .user-header__list-item a:hover,
+        .user-header__list-item a:active,
+        .user-header__list-item a.active{
+            color:#ffd000;
+        }
+        .user-main{
+            height: 100%;
+            padding: 2rem 2rem;
+            /* margin: 10px 0px; */
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: fixed;
+            justify-content: center;
+            /* align-content: center; */
+        }
+        .user-main__form{
+            height: 100%;
+            margin: 10px 0px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .user-main__input{
+            font: inherit;
+            font-size: medium;
+            margin: 10px 0px;
+            width: 100%;
+            height: 1.5rem;
+            border-radius: 2px;
+            border: none;
+            border-bottom: 2px solid rgba(16,16,224,1);
+            outline: none;  /* Remove default outline on focus */
+        }
+        .user-main__input:focus
+        {
+            border-color: #555; 
+        }
+        .user-main__input:valid {
+            border-bottom-color: green; /* Change border color when filled */
+        }
+        .user-main__label{
+            position: relative;
+            top: -50px;
+            /* left: -61px; */
+            font-size: 12px;
+            color: green;
+            display: none;
+            transition: color 0.3s, top 0.3s;
+            width: 100%;
+        }
+        .user-main__input:valid + .user-main__label{
+            /*color: rgb(128, 0, 49); /* Change the color when input is valid */
+            display: block;
+        }
+        .user-main__button{
+            font: inherit;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: medium;
+            font-weight: 600;
+            /* background-color: #154baf;
+            color: white; */
+            border-radius: 17px;
+            border-style: none;
+            height: 2rem;
+            width: 7rem;
+            padding: 2px;
+            margin: 0px;
+            cursor: pointer;
+            color: #545a6d;
+            background-color: #ffd000;
+        }
+        .user-main__button:active,
+        .user-main__button:hover{
+            /* color: #545a6d;
+            background-color: #ffd000; */
+            background-color: #154baf;
+            color: white;
+        }
+        .user-main__heading{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #545a6d;
+            width: 100%;
+            word-wrap: break-word;
+            display: flex;
+            /* align-content: center; */
+            justify-content: center;
+            align-items: center;
+        }
+        .user-main__card{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            /* margin: 8rem; */
+            padding: 2rem 4rem;
+            border-radius: 9px;
+            background: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <header class="user-header">    
+        <nav class="user-header__nav">
+            <ul class="user-header__list">
+                <li class="user-header__list-item"><a href='/'>Shop</a></li>
+                <li class="user-header__list-item"><a href='/admin/addUser' class="active">AddUser</a></li>
+                <li class="user-header__list-item"><a href='/admin/addProduct'>AddProduct</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="user-main">
+        <card class="user-main__card">
+            <h1 class="heading user-main__heading">Add user here...!</h1>
+            <form method="POST" action="/user" class="user-main__form">
+                <input required type="text" name="username" placeholder="Username" class="txtbox user-main__input" />
+                <label class="user-main__label">Username</label>
+                <button type="submit"  class="btn user-main__button" >Add</button>
+            </form>
+        </card>
+  
+    </main>
+</body>
+</html>
